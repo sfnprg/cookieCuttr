@@ -16,14 +16,14 @@
     ".travis.yml"
   ],
   "homepage": "https://github.com/rediris/cookieCuttr",
-  "version": "1.0.0_js-cookie",
-  "_release": "1.0.0_js-cookie",
+  "version": "1.0.1",
+  "_release": "1.0.1",
   "_resolution": {
     "type": "version",
-    "tag": "v1.0.0_js-cookie",
+    "tag": "v1.0.1",
     "commit": ""
   },
   "_source": "https://github.com/rediris/cookieCuttr",
-  "_target": "^1.0.0_js-cookie",
+  "_target": "^1.0.1",
   "_originalSource": "https://github.com/cdwharton/cookieCuttr"
 }

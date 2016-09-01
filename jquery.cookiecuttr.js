@@ -28,10 +28,12 @@
             cookieCutterDeclineOnly: false, // you'd like the CookieCutter to only hide when someone has clicked declined set this to true
             cookieAnalytics: true, // just using a simple analytics package? change this to true
             cookieDeclineButton: false, // this will disable non essential cookies
-            cookieAcceptButton: true, // this will disable non essential cookies
+            cookieAcceptButton: true, // this will enable cookies
             cookieResetButton: false,
             cookieOverlayEnabled: false, // don't want a discreet toolbar? Fine, set this to true
             cookiePolicyLink: '/privacy-policy/', // if applicable, enter the link to your privacy policy here...
+            cookieNameAccept: 'cc_cookie_accept',
+            cookieNameDecline: 'cc_cookie_decline',
             cookieMessage: 'We use cookies on this website, you can <a href="{{cookiePolicyLink}}" title="read about our cookies">read about them here</a>. To use the website as intended please...',
             cookieAnalyticsMessage: 'We use cookies, just to track visits to our website, we store no personal details.',
             cookieErrorMessage: "We\'re sorry, this feature places cookies in your browser and has been disabled. <br>To continue using this functionality, please",
@@ -65,6 +67,8 @@
         var cookieResetButton = options.cookieResetButton;
         var cookieOverlayEnabled = options.cookieOverlayEnabled;
         var cookiePolicyLink = options.cookiePolicyLink;
+        var cookieNameAccept = options.cookieNameAccept;
+        var cookieNameDecline = options.cookieNameDecline;
         var cookieMessage = message;
         var cookieAnalyticsMessage = options.cookieAnalyticsMessage;
         var cookieErrorMessage = options.cookieErrorMessage;
@@ -84,11 +88,11 @@
         var cookieDiscreetPosition = options.cookieDiscreetPosition;
         var cookieNoMessage = options.cookieNoMessage;
         // cookie identifier
-        var $cookieAccepted = Cookies('cc_cookie_accept') == "cc_cookie_accept";
+        var $cookieAccepted = Cookies(cookieNameAccept) == cookieNameAccept;
         $.cookieAccepted = function () {
             return $cookieAccepted;
         };
-        var $cookieDeclined = Cookies('cc_cookie_decline') == "cc_cookie_decline";
+        var $cookieDeclined = Cookies(cookieNameDecline) == cookieNameDecline;
         $.cookieDeclined = function () {
             return $cookieDeclined;
         };
@@ -219,10 +223,10 @@
         $('.cc-cookie-accept, .cc-cookie-decline').click(function (e) {
             e.preventDefault();
             if ($(this).is('[href$=#decline]')) {
-                Cookies("cc_cookie_accept", null, {
+                Cookies(cookieNameAccept, null, {
                     path: '/'
                 });
-                Cookies("cc_cookie_decline", "cc_cookie_decline", {
+                Cookies(cookieNameDecline, cookieNameDecline, {
                     expires: cookieExpires,
                     path: '/'
                 });
@@ -246,10 +250,10 @@
                     });
                 }
             } else {
-                Cookies("cc_cookie_decline", null, {
+                Cookies(cookieNameDecline, null, {
                     path: '/'
                 });
-                Cookies("cc_cookie_accept", "cc_cookie_accept", {
+                Cookies(cookieNameAccept, cookieNameAccept, {
                     expires: cookieExpires,
                     path: '/'
                 });
@@ -262,10 +266,10 @@
         //reset cookies
         $('a.cc-cookie-reset').click(function (f) {
             f.preventDefault();
-            Cookies("cc_cookie_accept", null, {
+            Cookies(cookieNameAccept, null, {
                 path: '/'
             });
-            Cookies("cc_cookie_decline", null, {
+            Cookies(cookieNameDecline, null, {
                 path: '/'
             });
             $(".cc-cookies").fadeOut(function () {
@@ -276,11 +280,11 @@
         //cookie error accept
         $('.cc-cookies-error a.cc-cookie-accept').click(function (g) {
             g.preventDefault();
-            Cookies("cc_cookie_accept", "cc_cookie_accept", {
+            Cookies(cookieNameAccept, cookieNameAccept, {
                 expires: cookieExpires,
                 path: '/'
             });
-            Cookies("cc_cookie_decline", null, {
+            Cookies(cookieNameDecline, null, {
                 path: '/'
             });
             // reload page to activate cookies
