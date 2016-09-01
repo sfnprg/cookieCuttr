@@ -67,8 +67,8 @@
         var cookieResetButton = options.cookieResetButton;
         var cookieOverlayEnabled = options.cookieOverlayEnabled;
         var cookiePolicyLink = options.cookiePolicyLink;
-        var cookieNameAccept: options.cookieNameAccept,
-        var cookieNameDecline: options.cookieNameDecline,
+        var cookieNameAccept = options.cookieNameAccept;
+        var cookieNameDecline = options.cookieNameDecline;
         var cookieMessage = message;
         var cookieAnalyticsMessage = options.cookieAnalyticsMessage;
         var cookieErrorMessage = options.cookieErrorMessage;
