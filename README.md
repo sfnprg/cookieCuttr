@@ -105,6 +105,7 @@ Credits
 
 * [weare2ndfloor](https://github.com/weare2ndfloor) for the plugin
 * [unsymbol](https://github.com/unsymbol) for organising the implementation txt into a readme markdown file
+* [rediris](https://github.com/rediris) for adding js-cookie dependency & adding bower.json file
 
 Copyright
 ---------
