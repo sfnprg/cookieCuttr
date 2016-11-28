@@ -34,6 +34,7 @@
             cookiePolicyLink: '/privacy-policy/', // if applicable, enter the link to your privacy policy here...
             cookieNameAccept: 'cc_cookie_accept',
             cookieNameDecline: 'cc_cookie_decline',
+            cookieButtonClassName: 'button', // defaults to button
             cookieMessage: 'We use cookies on this website, you can <a href="{{cookiePolicyLink}}" title="read about our cookies">read about them here</a>. To use the website as intended please...',
             cookieAnalyticsMessage: 'We use cookies, just to track visits to our website, we store no personal details.',
             cookieErrorMessage: "We\'re sorry, this feature places cookies in your browser and has been disabled. <br>To continue using this functionality, please",
@@ -64,6 +65,7 @@
         var cookieAnalytics = options.cookieAnalytics;
         var cookieDeclineButton = options.cookieDeclineButton;
         var cookieAcceptButton = options.cookieAcceptButton;
+        var cookieButtonClassName = options.cookieAcceptButton;
         var cookieResetButton = options.cookieResetButton;
         var cookieOverlayEnabled = options.cookieOverlayEnabled;
         var cookiePolicyLink = options.cookiePolicyLink;
@@ -98,13 +100,13 @@
         };
         // write cookie accept button
         if (cookieAcceptButton) {
-            var cookieAccept = ' <a href="#accept" class="cc-cookie-accept">' + cookieAcceptButtonText + '</a> ';
+            var cookieAccept = ' <a href="#accept" class="' + cookieButtonClassName + ' ' + cookieNameAccept + '">' + cookieAcceptButtonText + '</a> ';
         } else {
             var cookieAccept = "";
         }
         // write cookie decline button
         if (cookieDeclineButton) {
-            var cookieDecline = ' <a href="#decline" class="cc-cookie-decline">' + cookieDeclineButtonText + '</a> ';
+            var cookieDecline = ' <a href="#decline" class="' + cookieButtonClassName + ' ' + cookieNameDecline + '">' + cookieDeclineButtonText + '</a> ';
         } else {
             var cookieDecline = "";
         }
@@ -124,9 +126,9 @@
             // write cookie reset button
             if ((cookieResetButton) && (cookieDiscreetReset)) {
                 if (appOrPre) {
-                    $('body').append('<div class="cc-cookies cc-discreet"><a class="cc-cookie-reset" href="#" title="' + cookieResetButtonText + '">' + cookieResetButtonText + '</a></div>');
+                    $('body').append('<div class="cc-cookies cc-discreet"><a class="' + cookieButtonClassName + ' cc-cookie-reset" href="#" title="' + cookieResetButtonText + '">' + cookieResetButtonText + '</a></div>');
                 } else {
-                    $('body').prepend('<div class="cc-cookies cc-discreet"><a class="cc-cookie-reset" href="#" title="' + cookieResetButtonText + '">' + cookieResetButtonText + '</a></div>');
+                    $('body').prepend('<div class="cc-cookies cc-discreet"><a class="' + cookieButtonClassName + ' cc-cookie-reset" href="#" title="' + cookieResetButtonText + '">' + cookieResetButtonText + '</a></div>');
                 }
                 //add appropriate CSS depending on position chosen
                 if (cookieDiscreetPosition == "topleft") {
@@ -147,9 +149,9 @@
                 }
             } else if (cookieResetButton) {
                 if (appOrPre) {
-                    $('body').append('<div class="cc-cookies"><a href="#" class="cc-cookie-reset">' + cookieResetButtonText + '</a></div>');
+                    $('body').append('<div class="cc-cookies"><a href="#" class="' + cookieButtonClassName + ' cc-cookie-reset">' + cookieResetButtonText + '</a></div>');
                 } else {
-                    $('body').prepend('<div class="cc-cookies"><a href="#" class="cc-cookie-reset">' + cookieResetButtonText + '</a></div>');
+                    $('body').prepend('<div class="cc-cookies"><a href="#" class="' + cookieButtonClassName + ' cc-cookie-reset">' + cookieResetButtonText + '</a></div>');
                 }
             } else {
                 var cookieResetButton = "";
