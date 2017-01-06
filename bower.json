@@ -15,7 +15,7 @@
     ".tm_properties",
     ".travis.yml"
   ],
-  "homepage": "https://github.com/rediris/cookieCuttr",
+  "homepage": "https://github.com/aquent/cookieCuttr",
   "version": "1.0.2",
   "_release": "1.0.2",
   "_resolution": {
@@ -23,7 +23,7 @@
     "tag": "v1.0.2",
     "commit": ""
   },
-  "_source": "https://github.com/rediris/cookieCuttr",
+  "_source": "https://github.com/aquent/cookieCuttr",
   "_target": "^1.0.2",
   "_originalSource": "https://github.com/cdwharton/cookieCuttr"
 }
