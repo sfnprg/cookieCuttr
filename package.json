@@ -1,0 +1,29 @@
+{
+  "name": "cookiecuttr",
+  "license": "GPL",
+  "main": [
+    "jquery.cookiecuttr.js"
+  ],
+  "ignore": [
+    "travis.sh",
+    "test",
+    "Gruntfile.js",
+    "package.json",
+    ".gitignore",
+    ".jshintignore",
+    ".jshintrc",
+    ".tm_properties",
+    ".travis.yml"
+  ],
+  "homepage": "https://github.com/aquent/cookieCuttr",
+  "version": "1.0.2",
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.2",
+    "commit": ""
+  },
+  "_source": "https://github.com/aquent/cookieCuttr",
+  "_target": "^1.0.2",
+  "_originalSource": "https://github.com/cdwharton/cookieCuttr"
+}
