@@ -222,7 +222,7 @@
         // setting the cookies
 
         // for top bar
-        $('.cc-cookie-accept, .cc-cookie-decline').click(function (e) {
+        $('.'+cookieNameAccept, '.'+cookieNameDecline).click(function (e) {
             e.preventDefault();
             if ($(this).is('[href$=#decline]')) {
                 Cookies(cookieNameAccept, null, {
@@ -280,7 +280,7 @@
             });
         });
         //cookie error accept
-        $('.cc-cookies-error a.cc-cookie-accept').click(function (g) {
+        $('.cc-cookies-error a.'+cookieNameAccept).click(function (g) {
             g.preventDefault();
             Cookies(cookieNameAccept, cookieNameAccept, {
                 expires: cookieExpires,
