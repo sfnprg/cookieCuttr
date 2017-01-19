@@ -222,7 +222,7 @@
         // setting the cookies
 
         // for top bar
-        $('.'+cookieNameAccept, '.'+cookieNameDecline).click(function (e) {
+        $('.' + cookieNameAccept + ', .' + cookieNameDecline).click(function (e) {
             e.preventDefault();
             if ($(this).is('[href$=#decline]')) {
                 Cookies(cookieNameAccept, null, {
