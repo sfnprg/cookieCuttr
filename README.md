@@ -23,7 +23,7 @@ $(document).ready(function () {
 For any JavaScript you want to disable, you need to wrap the following if statement around it.
 
 ```javascript
-if (Cookies('cc_cookie_accept') == "cc_cookie_accept") {
+if (Cookies.get('cc_cookie_accept') == "cc_cookie_accept") {
   // insert the code you do not want to run UNTIL cookies are accepted here
 }
 ```
@@ -32,7 +32,7 @@ Example with Google Analytics
 -----------------------------
 
 ```javascript
-if (Cookies('cc_cookie_accept') == "cc_cookie_accept") {
+if (Cookies.get('cc_cookie_accept') == "cc_cookie_accept") {
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
   _gaq.push(['_trackPageview']);
@@ -48,7 +48,7 @@ if (Cookies('cc_cookie_accept') == "cc_cookie_accept") {
 Alternatively, you can do the following until cookies are declined.
 
 ```javascript
-if (Cookies('cc_cookie_decline') == "cc_cookie_decline") {
+if (Cookies.get('cc_cookie_decline') == "cc_cookie_decline") {
   // do nothing
 } else {
   var _gaq = _gaq || [];
