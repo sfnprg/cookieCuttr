@@ -90,11 +90,11 @@
     var cookieDiscreetPosition = options.cookieDiscreetPosition;
     var cookieNoMessage = options.cookieNoMessage;
     // cookie identifier
-    var $cookieAccepted = Cookies(cookieNameAccept) == cookieNameAccept;
+    var $cookieAccepted = Cookies.get(cookieNameAccept) == cookieNameAccept;
     $.cookieAccepted = function() {
       return $cookieAccepted;
     };
-    var $cookieDeclined = Cookies(cookieNameDecline) == cookieNameDecline;
+    var $cookieDeclined = Cookies.get(cookieNameDecline) == cookieNameDecline;
     $.cookieDeclined = function() {
       return $cookieDeclined;
     };
@@ -222,40 +222,40 @@
     // setting the cookies
 
     // for top bar
-    $('.' + cookieNameAccept + ', .' + cookieNameDecline).click(function(e) {
+    $('.' + cookieNameAccept + ', .' + cookieNameDecline).on('click', function(e) {
       e.preventDefault();
       if ($(this).is('[href$=#decline]')) {
-        Cookies(cookieNameAccept, null, {
+        Cookies.set(cookieNameAccept, null, {
           path: '/'
         });
-        Cookies(cookieNameDecline, cookieNameDecline, {
+        Cookies.set(cookieNameDecline, cookieNameDecline, {
           expires: cookieExpires,
           path: '/'
         });
         if (options.cookieDomain) {
           // kill google analytics cookies
-          Cookies("__utma", null, {
+          Cookies.set("__utma", null, {
             domain: '.' + options.cookieDomain,
             path: '/'
           });
-          Cookies("__utmb", null, {
+          Cookies.set("__utmb", null, {
             domain: '.' + options.cookieDomain,
             path: '/'
           });
-          Cookies("__utmc", null, {
+          Cookies.set("__utmc", null, {
             domain: '.' + options.cookieDomain,
             path: '/'
           });
-          Cookies("__utmz", null, {
+          Cookies.set("__utmz", null, {
             domain: '.' + options.cookieDomain,
             path: '/'
           });
         }
       } else {
-        Cookies(cookieNameDecline, null, {
+        Cookies.set(cookieNameDecline, null, {
           path: '/'
         });
-        Cookies(cookieNameAccept, cookieNameAccept, {
+        Cookies.set(cookieNameAccept, cookieNameAccept, {
           expires: cookieExpires,
           path: '/'
         });
@@ -266,12 +266,12 @@
       });
     });
     //reset cookies
-    $('a.cc-cookie-reset').click(function(f) {
+    $('a.cc-cookie-reset').on('click', function(f) {
       f.preventDefault();
-      Cookies(cookieNameAccept, null, {
+      Cookies.set(cookieNameAccept, null, {
         path: '/'
       });
-      Cookies(cookieNameDecline, null, {
+      Cookies.set(cookieNameDecline, null, {
         path: '/'
       });
       $(".cc-cookies").fadeOut(function() {
@@ -280,13 +280,13 @@
       });
     });
     //cookie error accept
-    $('.cc-cookies-error a.' + cookieNameAccept).click(function(g) {
+    $('.cc-cookies-error a.' + cookieNameAccept).on('click', function(g) {
       g.preventDefault();
-      Cookies(cookieNameAccept, cookieNameAccept, {
+      Cookies.set(cookieNameAccept, cookieNameAccept, {
         expires: cookieExpires,
         path: '/'
       });
-      Cookies(cookieNameDecline, null, {
+      Cookies.set(cookieNameDecline, null, {
         path: '/'
       });
       // reload page to activate cookies
