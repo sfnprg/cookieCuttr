@@ -53,7 +53,8 @@
       cookieDiscreetLinkText: "Cookies?",
       cookieDiscreetPosition: "topleft", //options: topleft, topright, bottomleft, bottomright
       cookieNoMessage: false, // change to true hide message from all pages apart from your policy page
-      cookieDomain: ""
+      cookieDomain: "",
+      cookieAcceptOnScrollMouse: false, //accept cookies on mouse scroll
     };
     var options = $.extend(defaults, options);
     var message = defaults.cookieMessage.replace('{{cookiePolicyLink}}', defaults.cookiePolicyLink);
@@ -292,6 +293,21 @@
       // reload page to activate cookies
       location.reload();
     });
+    // accept cookies on mouse scroll
+    if (options.cookieAcceptOnScrollMouse && !$cookieAccepted && !$cookieDeclined ) {
+      $('body').on('wheel', function(sm){
+        sm.preventDefault();
+        Cookies.set(cookieNameDecline, null, {
+          path: '/'
+        });
+        Cookies.set(cookieNameAccept, cookieNameAccept, {
+          expires: cookieExpires,
+          path: '/'
+        });
+        // reload page to activate cookies
+        location.reload();
+      });
+    }
   };
   // Hack to enforce compatibility with webpack
   if (typeof module !== 'undefined' && module !== null && module.exports) {
