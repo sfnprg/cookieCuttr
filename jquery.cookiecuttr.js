@@ -55,6 +55,7 @@
       cookieNoMessage: false, // change to true hide message from all pages apart from your policy page
       cookieDomain: "",
       cookieAcceptOnScrollMouse: false, //accept cookies on mouse scroll
+      cookieAcceptOnScrollPage: false, // accept cookies on mouse scroll
     };
     var options = $.extend(defaults, options);
     var message = defaults.cookieMessage.replace('{{cookiePolicyLink}}', defaults.cookiePolicyLink);
@@ -297,6 +298,21 @@
     if (options.cookieAcceptOnScrollMouse && !$cookieAccepted && !$cookieDeclined ) {
       $('body').on('wheel', function(sm){
         sm.preventDefault();
+        Cookies.set(cookieNameDecline, null, {
+          path: '/'
+        });
+        Cookies.set(cookieNameAccept, cookieNameAccept, {
+          expires: cookieExpires,
+          path: '/'
+        });
+        // reload page to activate cookies
+        location.reload();
+      });
+    }
+    // accept cookies on page scroll
+    if (options.cookieAcceptOnScrollPage && !$cookieAccepted && !$cookieDeclined ) {
+      $(window).on('scroll', function(sp){
+        sp.preventDefault();
         Cookies.set(cookieNameDecline, null, {
           path: '/'
         });
